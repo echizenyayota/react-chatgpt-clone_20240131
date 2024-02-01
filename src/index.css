@@ -11,7 +11,8 @@ body {
 }
 
 .app {
-  background-color: #cecece;
+  background-color: #8b8b8b;
+  display: flex;
 }
 
 .side-bar {
@@ -52,4 +53,15 @@ nav {
 .main {
   height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+}
+
+.info {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  padding: 10px;
 }
