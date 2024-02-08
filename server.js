@@ -3,8 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+require("dotenv").config();
+
 app.use(express.json());
 app.use(cors());
+
+const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 console.log("Hello World!");
 
