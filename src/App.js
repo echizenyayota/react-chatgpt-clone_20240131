@@ -1,4 +1,26 @@
 const App = () => {
+
+  const getMessages = async() => {
+
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        message: "How are you?",
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    };
+
+    try {
+      const response = await fetch('http://localhost:8000/completions', options);
+      const data = await response.json();
+      console.log(data);
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="app">
       <section className="side-bar">
@@ -20,7 +42,7 @@ const App = () => {
         <div className="bottom-section">
           <div className="input-container">
             <input />
-            <div id="submit">➢</div>
+            <div id="submit" onClick={getMessages}>➢</div>
             <p className="info">
               Chat GPT Dec 29 version. Free Research Preview. Our goal is to make AI systems more natural and safe to interact with. Your feedback will help us improve.
             </p>

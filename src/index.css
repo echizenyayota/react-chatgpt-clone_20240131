@@ -99,8 +99,8 @@ input:focus {
 
 #submit {
   position: absolute;
-  bottom: 70px;
-  right: -55px;
+  bottom: 100px;
+  right: -50px;
   cursor: pointer;
 }
 
