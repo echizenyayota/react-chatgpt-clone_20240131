@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
 
   const [value, setValue] = useState("");
   const [message, setMessage] = useState(null);
+  const [previousChats, setPreviousChats] = useState([]);
+  const [currentTitle, setCurrentTitle] = useState([]);
 
   const getMessages = async() => {
 
@@ -27,7 +29,30 @@ const App = () => {
     }
   }
 
-  console.log(message);
+  useEffect(() => {
+
+    if (!currentTitle && value && message) {
+      setCurrentTitle(value);
+    }
+
+    if(currentTitle && value && message) {
+      setPreviousChats(preChats => (
+        [...previousChats,
+          {
+            title: currentTitle,
+            role: "user",
+            content: value,
+          },
+          {
+            title: currentTitle,
+            role: message.role,
+            content: message.content,
+          }
+        ]
+      ))
+    }
+
+  }, [message, currentTitle]);
 
   return (
     <div className="app">
