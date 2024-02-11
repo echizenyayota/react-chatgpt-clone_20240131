@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const App = () => {
+
+  const [message, setMessage] = useState(null);
 
   const getMessages = async() => {
 
@@ -16,6 +20,7 @@ const App = () => {
       const response = await fetch('http://localhost:8000/completions', options);
       const data = await response.json();
       console.log(data);
+      setMessage(data.choices[0].message);
     } catch(err) {
       console.log(err);
     }
