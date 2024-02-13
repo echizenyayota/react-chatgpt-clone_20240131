@@ -62,6 +62,8 @@ const App = () => {
 
   console.log(previousChats);
 
+  const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle);
+
   return (
     <div className="app">
       <section className="side-bar">
@@ -78,7 +80,12 @@ const App = () => {
       <section className="main">
         {!currentTitle && <h1>Echizenya GPT</h1>}
         <ul className="feed">
-
+          {currentChat?.map((chatMessage, _index) => 
+            <li key={_index}>
+              <p className="role">{chatMessage.role}</p>
+              <p>{chatMessage.content}</p>
+            </li>
+          )}
         </ul>
         <div className="bottom-section">
           <div className="input-container">
