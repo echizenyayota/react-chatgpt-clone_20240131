@@ -13,6 +13,12 @@ const App = () => {
     setCurrentTitle(null);
   }
 
+  const handleClick = (uniqueTitle) => {
+    setCurrentTitle(uniqueTitle);
+    setMessage(null);
+    setValue("");
+  }
+
   const getMessages = async() => {
 
     const options = {
@@ -74,7 +80,8 @@ const App = () => {
       <section className="side-bar">
         <button onClick={createNewChat}>+ New Chat</button>
         <ul className="history">
-          {uniqueTitles?.map((uniqueTitle, _index) => <li key={_index}>{uniqueTitle}</li>)}
+          {uniqueTitles?.map((uniqueTitle, _index) => 
+          <li key={_index} onClick={() => handleClick(uniqueTitle)}>{uniqueTitle}</li>)}
         </ul>
         <nav>
           <p>Made by Echizenya</p>
