@@ -63,15 +63,18 @@ const App = () => {
   console.log(previousChats);
 
   const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle);
+  const uniqueTitles = Array.from(new Set(previousChats.map(previousChat =>
+    previousChat.title
+  )));
+
+  console.log(uniqueTitles);
 
   return (
     <div className="app">
       <section className="side-bar">
         <button onClick={createNewChat}>+ New Chat</button>
         <ul className="history">
-          <li>aaaaa</li>
-          <li>bbbb</li>
-          <li>cccccccc</li>
+          {uniqueTitles?.map((uniqueTitle, _index) => <li key={_index}>{uniqueTitle}</li>)}
         </ul>
         <nav>
           <p>Made by Echizenya</p>
